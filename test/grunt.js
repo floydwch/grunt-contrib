@@ -260,6 +260,27 @@ module.exports = function(grunt) {
       }
     },
 
+    render: {
+      jst: {
+        options: {
+          files: {
+            tpls: "fixtures/render/hello.tpl"
+          }
+        },
+        to: "fixtures/render/jst.tpl",
+        out: "fixtures/output/render_jst.js"
+      },
+      hello: {
+        options: {
+          data: {
+            title: "Hello Grunt!"
+          }
+        },
+        to: "fixtures/render/hello.tpl",
+        out: "fixtures/output/hello.html"
+      }
+    },
+
     options: {
       jade: {
         filename: "fixtures/jade/inc/"
@@ -268,5 +289,5 @@ module.exports = function(grunt) {
   });
 
   grunt.loadTasks("../tasks");
-  grunt.registerTask("default", "clean test:clean coffee compress copy jade jst handlebars less mincss requirejs stylus yuidoc test:tasks");
+  grunt.registerTask("default", "clean test:clean coffee compress copy jade jst handlebars less mincss requirejs stylus yuidoc render test:tasks");
 };
